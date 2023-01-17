@@ -1,5 +1,6 @@
 import time, os, io, sys
 from pypresence import Presence
+from urllib.parse import unquote
 cid = "783900573388111922"
 
 RPC = Presence(cid)
@@ -72,6 +73,25 @@ def getSong() -> dict:
 		songName = "<Esperando por player>"
 
 
+	# Filter
+
+	cnd = (
+		songName == None,
+		songArtist == None
+		)
+
+	if any(cnd):
+		_raw = os.popen("playerctl metadata").read().splitlines()
+		for line in _raw:
+			if ":url" in line:
+				raw_url = line.split(":url")
+				url = raw_url[1].replace("                 ", '')
+				url = unquote(url)
+
+				rsn = url.split('/')[-1]
+				
+				songArtist = "<unknown>"
+				songName = rsn
 
 
 	return {
