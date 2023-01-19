@@ -11,10 +11,10 @@ print("Programa Iniciado.\n\n")
 
 RPC.update(
 	state="Nenhum player aberto",
-	details="<Esperando por player>",
+	details="<Waiting for Player>",
 	large_image='cardinal_anime',
 	large_text="Cardinal",
-	small_text="<Nenhum player disponível>",
+	small_text="<No disponible players>",
 )
 
 
@@ -63,16 +63,11 @@ def getSong() -> dict:
 				title = y.split(":title")
 				songName = title[1].replace("               ", "")
 
-	elif "No players found" in getplaying:
-		isplaying = "Stopped"
-		songArtist = "<Não estou tocando>"
-		songName = "<Esperando por player>"
-
 
 	else:
 		isplaying = "Stopped"
-		songArtist = "<Não estou tocando>"
-		songName = "<Esperando por player>"
+		songArtist = "<Not playing>"
+		songName = "<Waiting for Player>"
 
 
 	# Filter
@@ -154,7 +149,7 @@ def updateSong():
 		large_image='3dhp',
 		large_text=ss,
 		small_text=sa,
-		buttons=[{'label': 'Meu Github', 'url': 'https://github.com/hayukimori'}]
+		buttons=[{'label': "Hayukimori's Github", 'url': 'https://github.com/hayukimori'}]
 	)
 
 	print("==========================")
@@ -165,39 +160,17 @@ def updateSong():
 
 updateSong()
 
-
 while True:
 	try:
 		if haschanged():
 			os.system("clear")
 			updateSong()
 	except KeyboardInterrupt:
-		print("\n\nSinal de saída Ctrl+C detectado. Saindo...\n\nObrigada por usar o programa!!!")
+		os.system("clear")
+		print("================================")
+		print("\nKeyboardInterrupt signal received\n. Closing...\n\nThanks for using my little script <3\n\n\nPT_BR: Obrigada por usar meu pequeno script <3 !!!")
+		print("================================")
+		
 		time.sleep(1)
 		os.system("clear")
 		sys.exit(0)
-
-	
-
-'''
-while True:
-	sinfo = getSong()
-
-	RPC.update(
-		state=sinfo['songArtist'],
-		details=sinfo['songName'],
-		large_image='cardinal_anime',
-		large_text=sinfo['isplaying'],
-		small_text=sinfo['songArtist'],
-		start=time.time()
-		)
-
-	print("==========================")
-	print(f"SS:\t{sinfo['isplaying']}")
-	print(f"SN:\t{sinfo['songName']}")
-	print(f"SA:\t{sinfo['songArtist']}")
-	print("==========================")
-
-	time.sleep(.8)
-	os.system("clear")
-'''
