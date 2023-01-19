@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import time, os, io, sys
 from pypresence import Presence
 from urllib.parse import unquote
