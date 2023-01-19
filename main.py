@@ -7,7 +7,7 @@ cid = "783900573388111922"
 
 RPC = Presence(cid)
 RPC.connect()
-print("Programa Iniciado.\n\n")
+print("aprich started.\n\n")
 
 RPC.update(
 	state="Nenhum player aberto",
@@ -168,7 +168,7 @@ while True:
 	except KeyboardInterrupt:
 		os.system("clear")
 		print("================================")
-		print("\nKeyboardInterrupt signal received\n. Closing...\n\nThanks for using my little script <3\n\n\nPT_BR: Obrigada por usar meu pequeno script <3 !!!")
+		print("\nKeyboardInterrupt signal received, Closing...\n\nThanks for using my little script <3\nPT_BR: Obrigada por usar meu pequeno script <3 !!!")
 		print("================================")
 		
 		time.sleep(1)
