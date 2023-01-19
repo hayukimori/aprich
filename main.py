@@ -168,9 +168,9 @@ while True:
 	except KeyboardInterrupt:
 		os.system("clear")
 		print("================================")
-		print("\nKeyboardInterrupt signal received, Closing...\n\nThanks for using my little script <3\nPT_BR: Obrigada por usar meu pequeno script <3 !!!")
+		print("\nClosing...\n\nThanks for using my little script <3\nPT_BR: Obrigada por usar meu pequeno script <3 !!!\n")
 		print("================================")
 		
-		time.sleep(1)
+		time.sleep(1.5)
 		os.system("clear")
 		sys.exit(0)
