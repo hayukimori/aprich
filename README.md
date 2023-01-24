@@ -6,7 +6,7 @@ Discord rich presence for local players that uses the `playerctl` API.
 
 ### *for unix-like systems*
 1. First of all, install the `pypresence` dependencie: **`python -m pip install pypresence`**
-2. Clone this repo: **`git clone https://github.com/kevinmarquesp/aprich`**
+2. Clone this repo: **`git clone https://github.com/hayukimori/aprich`**
 3. Install/update by copping the main file to the bin directory: **`cp aprich/main.py ~/.local/bin/aprich`**
 4. Give *execution permition* to that file wiht: **`chmod +x ~/.local/bin/aprich`**
 
