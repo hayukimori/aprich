@@ -23,3 +23,21 @@ Unninstall by removing the copied file with:
 rm ~/.local/bin/aprich
 ```
 > Maybe you also want to remove the `pypresence` library too with **`python -m pip uninstall pypresence`**
+
+## Usage
+After installed on `~/.local/bin/`, the usage will be easier, just run aprich on terminal, like this
+```bash
+$ aprich
+```
+
+Some arguments have been added, worth a look with `aprich --help`
+**Explanation of arguments**
+- `--enable-github-button` or `-b`: This option shows a button that takes you to this repository
+- `--image` or `-i`: In this option you can change to any of the default images
+
+
+**Available images**
+
+- `3dhp`: A pink headphone.
+- `3dhp_black`: A black/gray headphone (to combine with profiles without Nitro) ( default )
+- `cardinal_anime`: Default bot's profile picture
