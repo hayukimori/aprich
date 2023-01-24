@@ -2,16 +2,40 @@
 
 import os
 import time
+import argparse
 import pypresence
 
+
 from urllib.parse import unquote, quote
+from argparse import Namespace, ArgumentParser
 
 ID = "783900573388111922"
 DELAY = 1.5
 
+
+ENABLE_PROJECT_GITHUB_BUTTON = False
+IMAGE = "3dhp_black"
+
+
 rpc = None
 past_buf = None
 curr_buf = None
+
+
+class UserOptions:
+	@staticmethod
+	def get_args() -> Namespace:
+		"""Function with all the argument configuration using the ``argparser``
+		library that return the arguments given by the user in a ease to use
+		``Namespace`` object.
+		"""
+		parser: ArgumentParser = ArgumentParser(description='Simple Script to show playing music on Discord')
+
+		parser.add_argument('--enable-github-button', '-b', action=argparse.BooleanOptionalAction, default=False, help="Shows Aprich Project button linked to github")
+
+		parser.add_argument('--image', '-i', type=str, default="3dhp_black", help="Default rich presence image.")
+	
+		return parser.parse_args()
 
 
 class Display:
@@ -166,15 +190,25 @@ class Controllers:
 		sa = sinfo['songArtist']
 		su = sinfo['youtubeSearch']
 
-		while Discord.update(sa, sn, '3dhp', ss, sa, buttons=[
-			{
-			'label': "Hayukimori's Github",
-			'url': 'https://github.com/hayukimori'
-			},
-			{
-			'label': "Search On Youtube",
-			'url': su
-			}], err_h=ErrHandler.couldNotUpdate):
+		# Buttons
+		rpbuttons = [{
+				'label': "Search On Youtube",
+				'url': su
+			}
+		]
+
+		project_github_button = {
+				'label': "Aprich Project",
+				'url': 'https://github.com/hayukimori/aprich'
+			}
+
+
+
+		if ENABLE_PROJECT_GITHUB_BUTTON:
+			rpbuttons.append(project_github_button)
+
+
+		while Discord.update(sa, sn, IMAGE, ss, sa, buttons=rpbuttons, err_h=ErrHandler.couldNotUpdate):
 			time.sleep(DELAY)
 
 		Display.status(ss, sn, sa)
@@ -209,6 +243,14 @@ class Controllers:
 
 
 def main():
+	global ENABLE_PROJECT_GITHUB_BUTTON
+	global IMAGE
+
+	# Define default args based on cli args;
+	newvars = UserOptions.get_args()
+	ENABLE_PROJECT_GITHUB_BUTTON = newvars.enable_github_button
+	IMAGE = newvars.image
+	
 	try:
 		while Controllers.firstTime(ErrHandler.couldNotConnect):
 			time.sleep(DELAY)
