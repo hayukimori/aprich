@@ -13,7 +13,7 @@ Discord rich presence for local players that uses the `playerctl` API.
 Hey, heres a snippet to make your work eseaier 😊. Just copy and paste it in youre terminal emulator:
 ```bash
 python -m pip install pypresence
-git clone https://github.com/kevinmarquesp/aprich
+git clone https://github.com/hayukimori/aprich
 cp aprich/main.py ~/.local/bin/aprich
 chmod +x ~/.local/bin/aprich
 ```
