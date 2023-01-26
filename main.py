@@ -72,6 +72,27 @@ def searchOnYoutube(songname, songartist) -> str:
 	return str(ysu.format(query=query))
 
 
+class EasterEgg:
+	@staticmethod
+	def is_playing_nggyu(ss, sn, sa):
+		data =  ' '.join([ss, sn, sa]).lower()
+		return data.find('never gonna give you up') > -1
+
+	@staticmethod
+	def rick_astley():
+		while Discord.update('???', '???', '3dhp', '???', '???', buttons=[
+			{
+				'label': "Hayukimori's Github",
+				'url': 'https://github.com/hayukimori'
+			},
+			{
+				'label': "???",
+				'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+			}
+		], err_h=ErrHandler.couldNotUpdate):
+			time.sleep(DELAY)
+
+		Display.status('???', '???', '???')
 
 
 class Controllers:
@@ -166,15 +187,20 @@ class Controllers:
 		sa = sinfo['songArtist']
 		su = sinfo['youtubeSearch']
 
+		if EasterEgg.is_playing_nggyu(ss, sn, sa):
+			EasterEgg.rick_astley()
+			return
+
 		while Discord.update(sa, sn, '3dhp', ss, sa, buttons=[
 			{
-			'label': "Hayukimori's Github",
-			'url': 'https://github.com/hayukimori'
+				'label': "Hayukimori's Github",
+				'url': 'https://github.com/hayukimori'
 			},
 			{
-			'label': "Search On Youtube",
-			'url': su
-			}], err_h=ErrHandler.couldNotUpdate):
+				'label': "Search On Youtube",
+				'url': su
+            }
+		], err_h=ErrHandler.couldNotUpdate):
 			time.sleep(DELAY)
 
 		Display.status(ss, sn, sa)
