@@ -1,6 +1,14 @@
-# aprich
+# Aprich
+
+![Python Ver](https://img.shields.io/badge/Python-3.10.9-blue?style=flat-square)
+![PyPresence Ver](https://img.shields.io/badge/PyPresence-4.2.1-blue?style=flat-square) 
 
 Discord rich presence for local players that uses the `playerctl` API.
+<p align="left">
+<img src="https://user-images.githubusercontent.com/69482956/215346661-76c13b5a-4437-46ca-b913-e7e939e59809.png", width="300px"/>
+</p>
+
+
 
 ## Installation 
 
